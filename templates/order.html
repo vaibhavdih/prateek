@@ -269,13 +269,7 @@
 
 		</div>
 		<div class="scrollable" id="center_id">
-			<div class="food-item">
-				<img class="food-img" src="{% static "images/food.jpg" %}" align="left">
-				<span style="font-size: 24px;color:white;font-family: Metal Mania" class="food-name">Veg Ravioli with Paasta</span>&emsp;&emsp;
-				<span style="font-size: 24px;color:black" class="food-price">$100</span><br>
-				<hr style="border:1px solid red;width:70%">
 
-			</div>
 
 
 		</div>
@@ -286,10 +280,9 @@
 			$(".leftside").height($(window).height()-50);
 			$(".rightside").height($(window).height()-50);
 			$(".scrollable").height($(window).height()-50);
-			ready();
+
 
             {% for category in categories %}
-                console.log("{{ category.name }}");
                  $("#{{ category.name }}").click(function(){
 
 
@@ -301,20 +294,17 @@
 \t\t\t\t<span style="font-size: 24px;color:white;font-family: Metal Mania" class="food-name">{{ dishes.name }}</span>&emsp;&emsp;
 \t\t\t\t<span style="font-size: 24px;color:black" class="food-price">${{ dishes.coins }}</span><br>
 \t\t\t\t<hr style="border:1px solid red;width:70%">
+<span style="color:black;font-size:15px;">{{ dishes.description }}</span>
 
 \t\t\t</div>` ;
 
 
                         $("#center_id").append(menu_content);
                          {% endfor %}
-                 ready();
+
                  $(".food-item").click(function(event){
-
-        addToCartClicked(event);
+                     add_shop(event.target);
     });
-
-
-
 
 		});
 
@@ -325,8 +315,29 @@
 
 		});
 
+		function add_shop(a){
+		    var tag_=a.tagName
+		    console.log(tag_);
+		    console.log(typeof tag_);
+		    if(tag_.localeCompare("DIV") == 0){
+		        var title = a.getElementsByClassName('food-name')[0].innerText;
+		    var price = a.getElementsByClassName('food-price')[0].innerText;
+		    console.log(title);
+		    console.log(price);
+
+            }else{
+		        var title = a.parentElement.getElementsByClassName('food-name')[0].innerText;
+		        var price =a.parentElement.getElementsByClassName('food-price')[0].innerText;
+		        console.log(title);
+		    console.log(price);
+
+            }
+
+		    addItemToCart(title,price);
+		    updateCartTotal();
 
 
+        }
 
 
 
