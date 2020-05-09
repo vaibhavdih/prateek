@@ -1,0 +1,351 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head>
+<title>Coin Management</title>
+<style>
+	.topnav{
+	overflow:hidden;
+	background-color: #8B008B;
+	width: 90%;
+	float: center;
+	border-radius:45px;
+}
+
+.topnav a {
+	float: right;
+	color: white;
+	text-align:center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.topnav a:hover{
+	background-color:#ffff;
+	color: black;
+	border-radius:15px;
+}
+
+.topnav b {
+	float: left;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 20px;
+
+}
+
+.container{
+	display:flex;
+	flex-direction: row;
+	margin-top:25px;
+
+}
+.left{
+	width: 30%;
+	margin-left:50px;
+	margin-right: 40px;
+	background: rgba(17,24,34,.8);
+	color:#fff;
+}
+.centre{
+	width:20%;
+	background: rgba(17,24,34,.8);
+	color:#fff;
+	margin-left:30px;
+	margin-right: 30px;
+}
+
+.right{
+	width:30%;
+	margin-right:50px;
+	margin-left: 40px;
+	background: rgba(17,24,34,.8);
+	color:#fff;
+
+}
+
+.patti
+{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: #8B008B;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+    
+}
+
+.patti_centre{
+	position: relative;
+    width: 100%;
+    height: 40px;
+    background:#8B008B;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+
+}
+
+.select option {
+    margin: 40px;
+    background: rgba(17,24,34,.8);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+	border-radius:40px;
+}
+
+.left form input[type="text"],
+.right form input[type="text"]
+{
+    width: 50%;
+    margin-top: 15px;
+    height: 35px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 40px;
+    box-shadow: none;
+    outline: none;
+    color: #fff;
+    background: transparent;
+    border: 1px solid #fff;
+    text-align:center;
+
+}
+
+.left form label{
+	margin-left: 20px;
+}
+
+.centre form input[type="text"]
+{
+	width: 30%;
+    margin-top: 15px;
+    height: 35px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 40px;
+    box-shadow: none;
+    outline: none;
+    color: #fff;
+    background: transparent;
+    border: 1px solid #fff;
+    text-align:center;
+    font-weight:bolder;
+    font-size: 15px;
+
+}
+	
+.button{
+	border-radius:40px;
+	width:150px;
+	background: #8B008B;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 10px 5px;
+	float: right;
+	margin: 20px;
+	box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	color:white;
+}
+
+.button:hover{
+	background: #1d2b38;
+}
+	
+</style>
+</head>
+<body background="{% static "images/bg.png" %}">
+	<br>
+	<center>
+	<div class="topnav">
+		<a class="active" href="">Logout</a>
+		<a class="active" href="/member/registration">Registration</a>
+		<b align ="left" class="active" href="">Coin Management</b><br>
+	</div>
+	</center>
+	
+	<div class="container">
+		<div class="left">
+			<div class="patti">Cash Out</div>
+			<form>
+                <label for="mem_out">MEMBER ID :</label>
+                <input type="text" list="members" id="mem_out"><br>
+                <datalist id="members">
+                    {% for member in members %}
+                <option value="{{ member.member_id }}">
+                    {% endfor %}
+                </datalist>               
+                <label  for="10000">&emsp;&emsp;&emsp;10000 :</label>
+                <input type="text" name="" id="10000" value=0 onkeyup="calculate(1)"><br>
+                <label for="5000">&emsp;&emsp; &emsp; 5000 :</label>
+                <input type="text" name="" id="5000" value=0 onkeyup="calculate(1)"><br>
+                <label  for="2000">&emsp;&emsp; &emsp; 2000 :</label>
+                 <input type="text" name="" id="2000" value=0 onkeyup="calculate(1)"><br>
+                <label for="1000">&emsp;&emsp; &emsp; 1000 :</label>
+                <input type="text" name="" id ="1000" value=0 onkeyup="calculate(1)"><br>
+                <label  for="500">&emsp;&emsp;&emsp;&emsp;500 :</label>
+                 <input type="text" name="" id="500" value=0 onkeyup="calculate(1)"><br>
+                <label for="100">&emsp;  &emsp; &emsp;   100 :</label>
+                <input type="text" name="" id="100" value=0 onkeyup="calculate(1)"><br>
+                <label for="50">&emsp;&emsp; &emsp;&emsp; 50 :</label>
+                <input type="text" name="" id="50" value=0 onkeyup="calculate(1)"><br>
+                <label for="amount">&emsp;&emsp; Amount :</label>
+                <input type="text" name="" id="amount" disabled value=0><br>
+                <button id="cashoutbutton" class="button">Submit</button>
+                
+                <br><br>
+
+                </form>
+		</div>
+		
+		<div class="centre">
+			<div class="patti_centre">Inventory</div>
+			<form>  
+                <label  for="10000">&emsp;&emsp;&emsp;10000 :</label>
+                <input type="text" name="" value={{ inventory.r10000 }} disabled><br>
+                <label for="5000">&emsp;&emsp; &emsp; 5000 :</label>
+                <input type="text" name="" value={{ inventory.r5000 }} disabled><br>
+                <label  for="2000">&emsp;&emsp; &emsp; 2000 :</label>
+                 <input type="text" name="" value={{ inventory.r2000 }} disabled><br>
+                <label for="1000">&emsp;&emsp; &emsp; 1000 :</label>
+                <input type="text" name="" value={{ inventory.r1000 }} disabled><br>
+                <label  for="500">&emsp;&emsp;&emsp;&emsp;500 :</label>
+                 <input type="text" name="" value={{ inventory.r500 }} disabled><br>
+                <label for="100">&emsp;  &emsp; &emsp;   100 :</label>
+                <input type="text" name="" value={{ inventory.r100 }} disabled><br>
+                <label for="50">&emsp;&emsp; &emsp;&emsp; 50 :</label>
+                <input type="text" name="" value={{ inventory.r50 }} disabled><br>
+
+                
+                <br><br>
+
+                </form>
+			
+		</div>
+		
+		<div class="right">
+		<div class="patti">Cash In</div>
+
+		<form>  
+                <label  for="10000">&emsp;&emsp;&emsp;10000 :</label>
+                <input type="text" name="" id="r10000" value=0 onkeyup="calculate(2)"><br>
+                <label for="5000">&emsp;&emsp; &emsp; 5000 :</label>
+                <input type="text" name="" id="r5000" value=0 onkeyup="calculate(2)"><br>
+                <label  for="2000">&emsp;&emsp; &emsp; 2000 :</label>
+                 <input type="text" name="" id="r2000" value=0 onkeyup="calculate(2)"><br>
+                <label for="1000">&emsp;&emsp; &emsp; 1000 :</label>
+                <input type="text" name="" id ="r1000" value=0 onkeyup="calculate(2)"><br>
+                <label  for="500">&emsp;&emsp;&emsp;&emsp;500 :</label>
+                 <input type="text" name="" id="r500" value=0 onkeyup="calculate(2)"><br>
+                <label for="100">&emsp;  &emsp; &emsp;   100 :</label>
+                <input type="text" name="" id="r100" value=0 onkeyup="calculate(2)"><br>
+                <label for="50">&emsp;&emsp; &emsp;&emsp; 50 :</label>
+                <input type="text" name="" id="r50" value=0 onkeyup="calculate(2)"><br>
+                <label for="amount_">&emsp;&emsp; Amount :</label>
+                <input type="text" name="" id="amount_" disabled value=0><br>
+                <button id="cashinbutton" class="button">Submit</button>
+                
+                <br><br>
+
+                </form>
+
+	    </div>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	function calculate(key){
+		var total=0;
+		var ids=[10000,5000,2000,1000,500,100,50];
+		if(key==1){
+		var i;
+		for(i=0;i<ids.length;i++){
+			var ids_ = "".concat(ids[i].toString());
+			total = total + ids[i]*document.getElementById(ids_).value;
+
+		}
+
+		document.getElementById("amount").value=total;
+
+	}else{
+		var i;
+		for(i=0;i<ids.length;i++){
+			var ids_ = "r".concat(ids[i].toString());
+			total = total + ids[i]*document.getElementById(ids_).value;
+
+		}
+
+		document.getElementById("amount_").value=total;
+
+		}
+		
+	}
+
+	var URL = window.location.href;
+    var cash_in_btn = document.getElementById("cashinbutton");
+	var cash_out_btn = document.getElementById("cashoutbutton");
+
+	cash_in_btn.addEventListener("click",function (e){
+        e.preventDefault();
+        var r10000 = document.getElementById("r10000").value;
+        var r5000 = document.getElementById("r5000").value;
+        var r2000 = document.getElementById("r2000").value;
+        var r1000 = document.getElementById("r1000").value;
+        var r500 = document.getElementById("r500").value;
+        var r100 = document.getElementById("r100").value;
+        var r50 = document.getElementById("r50").value;
+        var amount = document.getElementById("amount_").value;
+        var data ={"r10000":r10000,"r5000":r5000,"r2000":r2000,"r1000":r1000,"r500":r500,"r100":r100,"r50":r50,"amount":amount,"key":2};
+        console.log(data);
+
+        $.post(URL,data,function(response){
+          console.log(response);
+          alert(response);
+          window.location.replace(URL);
+        });
+         });
+
+	cash_out_btn.addEventListener("click",function(e){
+	    e.preventDefault();
+	    var r10000 = document.getElementById("10000").value;
+        var r5000 = document.getElementById("5000").value;
+        var r2000 = document.getElementById("2000").value;
+        var r1000 = document.getElementById("1000").value;
+        var r500 = document.getElementById("500").value;
+        var r100 = document.getElementById("100").value;
+        var r50 = document.getElementById("50").value;
+        var amount = document.getElementById("amount").value;
+        var mem_id = document.getElementById("mem_out").value;
+        var data ={"r10000":r10000,"r5000":r5000,"r2000":r2000,"r1000":r1000,"r500":r500,"r100":r100,"r50":r50,"amount":amount,"mem_id":mem_id,"key":1};
+        console.log(data);
+        $.post(URL,data,function(response){
+          console.log(response);
+          alert(response);
+          window.location.replace(URL);
+        });
+
+
+        });
+
+
+
+
+
+
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,348 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head>
+<title>Add </title>
+<style>
+	.topnav{
+	overflow:hidden;
+	background-color: blue;
+	width: 90%;
+	float: center;
+	border-radius:45px;
+}
+
+.topnav a {
+	float: right;
+	color: white;
+	text-align:center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.topnav a:hover{
+	background-color:#ffff;
+	color: black;
+	border-radius:15px;
+}
+
+.topnav b {
+	float: left;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 20px;
+
+}
+
+.container{
+	display:flex;
+	flex-direction: row;
+	margin-top:25px;
+
+}
+.left{
+	width: 30%;
+	margin-left:15px;
+	margin-right: 10px;
+	background: rgba(17,24,34,.8);
+	color:#fff;
+}
+.centre{
+	width:30%;
+	background: rgba(17,24,34,.8);
+	color:#fff;
+	margin-left:10px;
+	margin-right: 10px;
+}
+
+.right{
+	width:30%;
+	margin-right:10px;
+	margin-left: 15px;
+	background: rgba(17,24,34,.8);
+	color:#fff;
+
+}
+
+.patti
+{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: blue;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+
+}
+
+.patti_centre{
+	position: relative;
+    width: 100%;
+    height: 40px;
+    background: blue;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+
+}
+
+.select {
+
+   width: 50%;
+   margin-top: 15px;
+    margin-bottom: 20px;
+    height: 40px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 40px;
+   overflow:hidden;
+    outline: none;
+     color: #fff;
+    background: transparent;
+    border: 1px solid #fff;
+}
+
+.select option {
+    margin: 40px;
+    background: rgba(17,24,34,.8);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+	border-radius:40px;
+}
+
+.left form input[type="text"],
+.right form input[type="text"],.right form input[type="number"],.left form input[type="number"]
+{
+    width: 50%;
+    margin-top: 15px;
+    height: 35px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 40px;
+    box-shadow: none;
+    outline: none;
+    color: #fff;
+    background: transparent;
+    border: 1px solid #fff;
+    text-align:center;
+
+}
+
+.left form label{
+	margin-left: 20px;
+}
+
+.centre form input[type="text"]
+{
+	width: 50%;
+    margin-top: 15px;
+    height: 35px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 40px;
+    box-shadow: none;
+    outline: none;
+    color: #fff;
+    background: transparent;
+    border: 1px solid #fff;
+    text-align:center;
+    font-weight:bolder;
+    font-size: 15px;
+
+}
+
+.button{
+	border-radius:40px;
+	width:150px;
+	background: #1d2b38;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 10px 5px;
+	float: right;
+	margin: 20px;
+	box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	color:white;
+}
+
+.button:hover{
+	background: #247ebf;
+}
+
+</style>
+</head>
+<body background="{% static "images/bg.png" %}">
+	<br>
+	<center>
+	<div class="topnav">
+		<a class="active" href="">Logout</a>
+		<a class="active" href="/">Registration</a>
+		<b align ="left" class="active" href="">Food Configuration</b><br>
+	</div>
+	</center>
+
+	<div class="container">
+		<div class="left">
+			<div class="patti">Add table</div>
+			<form id="table_form">
+                <label  for="table_id">&emsp;&emsp;Table ID :</label>
+                <input type="text" name="" id="table_id" required><br>
+                <label for="capacity">&emsp;&emsp;Capacity :</label>
+                <input type="number" name="capacity" id="capacity" required><br>
+                <label for="idt">Sevice Centre :</label>
+                <select class="select" id="sc">
+                <option value="SC1">Service Centre 1</option>
+                <option value="SC2">Service Centre 2</option>
+                <option value="SC3">Service Centre 3</option>
+                </select>
+                <br>
+
+                <button id="add_table_button" class="button">Add</button>
+
+                <br><br>
+
+                </form>
+		</div>
+
+		<div class="centre">
+			<div class="patti_centre">Add food Category</div>
+			<form id="cat_form">
+                <label  for="cat_name">&emsp;Category Name :</label>
+                <input type="text" name="" id="cat_name" placeholder="eg. Starters" required><br>
+                <label >&emsp;&emsp;&emsp;&emsp;&emsp;Type :</label>
+                <select class="select" id="cat_type">
+                <option value="Food">Food</option>
+                <option value="Liquor">Liquor</option>
+                </select>
+                <button id="add_cat_button" class="button">Add</button>
+
+
+
+                <br><br>
+
+                </form>
+
+		</div>
+
+		<div class="right">
+		<div class="patti">Add Menu</div>
+
+		<form id="dish_form">
+            <label  for="dish_name">&emsp;Dish Name :</label>
+                <input type="text" name="" id="dish_name" placeholder="eg. Ravioli" required><br>
+                <label >&emsp;&emsp;Category :</label>
+                <select class="select" id="dish_category">
+                    {% for category in categories %}
+                <option value="{{ category.name }}">{{ category.name }} - {{ category.type }}</option>
+                    {% endfor %}
+
+                </select><br>
+                <label  for="dish_price">&emsp;&emsp;&emsp;Price :</label>
+                <input type="number" name="" id="dish_price" placeholder="" required><br>
+                <label  for="description">&emsp;Description :</label>
+                <input type="text" name="" id="description" placeholder="eg. contains eggs"><br>
+                <button id="add_menu_button" class="button">Add</button>
+
+
+                <br><br>
+
+                </form>
+
+	    </div>
+	</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+
+    $("#table_form").submit(function(event){
+        event.preventDefault();
+        var table_id =document.getElementById("table_id").value;
+        var capacity = document.getElementById("capacity").value;
+        var sc=document.getElementById("sc").value;
+        console.log(capacity);
+        var data = {"table_id":table_id,"capacity":capacity,"sc":sc}
+        var URL = window.location.href;
+
+        $.post(URL+"table/",data,function(response){
+
+           if(parseInt(response) == 0) {
+               alert("Table with this id already exists.");
+           }else{
+
+            alert("Your table has been added");
+            window.location.href=URL;}
+
+        });
+
+
+
+    });
+
+    $("#cat_form").submit(function(event){
+        event.preventDefault();
+        var cat_name =document.getElementById("cat_name").value;
+        var cat_type = document.getElementById("cat_type").value;
+
+        var data = {"cat_name":cat_name,"cat_type":cat_type}
+        var URL = window.location.href;
+
+        $.post(URL+"category/",data,function(response){
+
+           if(parseInt(response) == 0) {
+               alert("This Category already exists.");
+           }else{
+
+            alert("Your Category has been added");
+            window.location.href=URL;}
+
+        });
+
+
+
+    });
+
+    $("#dish_form").submit(function(event){
+        event.preventDefault();
+        var name =document.getElementById("dish_name").value;
+        var coins = document.getElementById("dish_price").value;
+        var description = document.getElementById("description").value;
+        var category = document.getElementById("dish_category").value;
+
+        var data = {"name":name,"coins":coins,"description":description,"category":category}
+        var URL = window.location.href;
+
+        $.post(URL+"dish/",data,function(response){
+
+           if(parseInt(response) == 0) {
+               alert("This Dish already exists.");
+           }else{
+
+            alert("Your Dish has been added");
+            window.location.href=URL;}
+
+        });
+
+
+
+    });
+
+
+
+
+</script>
+
+</body>
+</html>

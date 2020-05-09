@@ -1,0 +1,354 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head>
+<title>Member Registration</title>
+
+<style>
+
+.topnav{
+	overflow:hidden;
+	background-color: #247ebf;
+	width: 90%;
+	float: center;
+	border-radius:45px;
+}
+
+.topnav a {
+	float: right;
+	color: white;
+	text-align:center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.topnav a:hover{
+	background-color:#ffff;
+	color: black;
+	border-radius:15px;
+}
+
+.topnav b {
+	float: left;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 20px;
+
+}
+
+.select {
+
+   width: 50%;
+    margin-bottom: 20px;
+    height: 40px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 40px;
+   overflow:hidden;
+    outline: none;
+     color: #fff;
+    background: transparent;
+    border: 1px solid #fff;
+}
+ 
+.select option {
+    margin: 40px;
+    background: rgba(17,24,34,.8);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+	border-radius:40px;
+}
+
+
+.fold 
+{
+    position: relative;
+    width: 50%;
+    background: rgba(17,24,34,.8);
+    transform-origin: top;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    transition: .5s;
+    transform: perspective(2000px) rotateX(90deg);
+	 color: #fff;
+	 margin: 15px;
+	 float:left;
+}
+
+.fold , .active
+{
+    transform: perspective(2000px) rotateX(0deg);
+}
+.fold form input[type="text"],
+.fold form input[type="password"]
+{
+    width: 50%;
+    margin-bottom: 15px;
+    height: 35px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 40px;
+    box-shadow: none;
+    outline: none;
+    color: #fff;
+    background: transparent;
+    border: 1px solid #fff;
+}
+::placeholder
+{
+    color: #fff;
+}
+.fold form input[type="submit"]
+{
+	width:200px;
+    display: block;
+    padding: 12px 40px;
+    border-radius: 40px;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #1d2b38;
+    color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	float:right;
+}
+.fold form input[type="submit"]:hover
+{
+	
+    background: #247ebf;
+}
+.fold form a
+{
+    color: #fff;
+    margin-top: 20px;
+    display: block;
+    font-size: 14px;
+    text-align: right;
+    text-decoration: none;
+    font-weight: bold;	
+	
+}
+
+.button{
+	border-radius:40px;
+	width:150px;
+	background: #1d2b38;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 10px 5px;
+	float: right;
+	margin: 20px;
+	box-shadow: 0 5px 10px rgba(0,0,0,.5);
+}
+
+.button:hover{
+	background: #247ebf;
+}
+
+.cool{
+	float: right;
+	background: rgba(17,24,34,.8);
+	width: 47%;
+	margin-top:15px;
+	color:#fff;
+
+
+}
+
+.play-area-sub {
+  width: 47%;
+  padding: 1em 1%;
+  display: inline-block;
+  text-align: center;
+  border: 1px white;
+}
+
+</style>
+
+
+</head>
+<body background="{% static "images/bg.png" %}" width="100%">
+	<br>
+	<center>
+	<div class="topnav">
+		<a class="active" href="">Logout</a>
+		<a class="active" href="/member/coins">Coin Management</a>
+		<b align ="left" class="active" href="">New Member Registration</b><br>
+	</div>
+	</center>
+	<div class="container">
+		<div class="fold">
+				<center>
+				<form>
+				
+				<label  for="fname">&emsp;FIRST NAME :</label>
+				<input type="text" name="" id="1" placeholder="ENTER FIRST NAME"><br>
+                <label for="lname">&emsp;LAST NAME :</label>
+				<input type="text" name="" id="2" placeholder="ENTER LAST NAME"><br>
+                <label  for="address">&emsp;&emsp;ADDRESS :</label>
+				 <input type="text" name="" id="3" placeholder="ENTER THE ADDRESS"><br>
+                <label for="contact">CONTACT NO :</label>
+				<input type="text" name="" id ="4" placeholder="ENTER THE CONTACT NO"><br>
+                <label  for="rating">&emsp;&emsp;&emsp;RATING :</label>
+				 <input type="text" name="" id="5" placeholder="ENTER THE RATING"><br>
+                <label for="idt">&emsp;&emsp;&emsp;ID TYPE :</label>
+				
+  				<select class="select" id="6">
+  				<option value="Aadhar Card">Aadhar Card</option>
+  				<option value="Passport">Passport</option>
+  				<option value="Voter ID">Voter ID</option>
+  				<option value="Driving License"> Driving License</option>
+				</select>
+				<br>
+				<label for="id">&emsp;&emsp;&emsp;&emsp;ID NO :</label>
+				<input type="text" name="" id="7" placeholder="ENTER THE ID NO"><br><br>
+				<input type="submit"  name="submit" id="submit" class="btn btn-primary" value="SUBMIT">
+				<br><br>
+
+				</form>
+				</center>
+			    </div>
+				<div class="cool">
+				<div class="play-area">
+  				<div class="play-area-sub">
+    			<h3>Stream</h3>
+    			<video id="stream" width="240" height="240"></video>
+  				</div>
+  				<div class="play-area-sub">
+    			<h3>Capture</h3>
+    <canvas id="capture" width="240" height="240"></canvas>
+    <div id="snapshot"></div>
+  </div>
+</div>
+<div class="button-group">
+  <button id="btn-start" type="button" class="button">Start</button>
+  <button id="btn-stop" type="button" class="button">Stop</button>
+  <button id="btn-capture" type="button" class="button">Capture</button>
+</div>
+
+	</div>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        var URL=window.location.href;
+var btnStart = document.getElementById( "btn-start" );
+var btnStop = document.getElementById( "btn-stop" );
+var btnCapture = document.getElementById( "btn-capture" );
+
+// The stream & capture
+var stream = document.getElementById( "stream" );
+var capture = document.getElementById( "capture" );
+var snapshot = document.getElementById( "snapshot" );
+
+// The video stream
+var cameraStream = null;
+
+// Attach listeners
+btnStart.addEventListener( "click", startStreaming );
+btnStop.addEventListener( "click", stopStreaming );
+btnCapture.addEventListener( "click", captureSnapshot );
+
+// Start Streaming
+function startStreaming() {
+    console.log("Stream");
+
+    var mediaSupport = 'mediaDevices' in navigator;
+
+    if( mediaSupport && null == cameraStream ) {
+
+        navigator.mediaDevices.getUserMedia( { video: true } )
+        .then( function( mediaStream ) {
+
+            cameraStream = mediaStream;
+
+            stream.srcObject = mediaStream;
+
+            stream.play();
+        })
+        .catch( function( err ) {
+
+            console.log( "Unable to access camera: " + err );
+        });
+    }
+    else {
+
+        alert( 'Your browser does not support media devices.' );
+
+        return;
+    }
+}
+
+// Stop Streaming
+function stopStreaming() {
+
+    if( null != cameraStream ) {
+
+        var track = cameraStream.getTracks()[ 0 ];
+
+        track.stop();
+        stream.load();
+
+        cameraStream = null;
+    }
+}
+
+function captureSnapshot() {
+
+    if( null != cameraStream ) {
+
+        var ctx = capture.getContext( '2d' );
+        var img = new Image();
+
+        ctx.drawImage( stream, 0, 0, capture.width, capture.height );
+
+
+
+    }
+}
+function post_data(){
+    var fname=document.getElementById("1").value;
+    var lname=document.getElementById("2").value;
+    var address=document.getElementById("3").value;
+    var contact = document.getElementById("4").value;
+    var rating=document.getElementById("5").value;
+    var id_type=document.getElementById("6").value;
+    var id_no = document.getElementById("7").value;
+
+
+    var uri    = capture.toDataURL( "image/png" );
+    var img= uri.replace(/^data:image.+;base64,/, '');
+
+
+
+
+
+    var data={"fname":fname,"lname":lname,"address":address,"contact":contact,"rating":rating,"id_type":id_type,"id_no":id_no,"pic":img};
+    console.log(data);
+    $.post(URL,data,function(response){
+        console.log(response);
+        alert(response+" created");
+        window.location.replace(URL);
+
+
+    });
+}
+    var submit = document.getElementById("submit");
+
+    submit.addEventListener("click",function (e){
+        e.preventDefault();
+        post_data();
+
+
+    } );
+</script>
+
+</body>
+</html>
