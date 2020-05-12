@@ -183,3 +183,6 @@ def checkin(request):
             e.save()
             return redirect("/captain/")
 
+def go_to_login(request):
+    if request.method=='GET':
+        return redirect("/login/")

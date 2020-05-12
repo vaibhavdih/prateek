@@ -3,29 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="19b45684-f477-47c0-8514-c77b61dfcdcd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_BACKUP_13666.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_BASE_13666.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_LOCAL_13666.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_REMOTE_13666.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/member/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/member/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/member/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/member/migrations/0002_cashin_membercoins_totalcoins.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/member/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/member/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/member/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/member/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/member/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/member/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu/migrations/0002_auto_20200508_1434.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu/migrations/0003_auto_20200508_2210.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prateek/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/prateek/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prateek/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/prateek/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/coins.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coins.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/new.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/new.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +85,7 @@
       <workItem from="1588666471828" duration="601000" />
       <workItem from="1588707363987" duration="133000" />
       <workItem from="1588943418506" duration="12748000" />
-      <workItem from="1588972305577" duration="83922000" />
+      <workItem from="1588972305577" duration="84375000" />
     </task>
     <servers />
   </component>

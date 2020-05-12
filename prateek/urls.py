@@ -30,4 +30,5 @@ urlpatterns = [
     path('kitchen/',v.kitchen,name="kitchen"),
     path('bar/',v.bar,name='bar'),
     path('waiter/',v.waiter,name="waiter"),
+    path('',views.go_to_login,name='got_to_login'),
 ]
