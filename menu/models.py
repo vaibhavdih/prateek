@@ -1,4 +1,6 @@
 from django.db import models
+from member.models import Members,Staff
+from datetime import date
 
 class Category(models.Model):
     category_id = models.AutoField(primary_key=True)
@@ -25,4 +27,33 @@ class Table(models.Model):
 	def __str__(self):
 		return self.table_id
 
-# Create your models here.
+
+class Order(models.Model):
+	order_id = models.AutoField(primary_key=True)
+	member_id = models.ForeignKey(Members,on_delete=models.PROTECT)
+	staff_id = models.ForeignKey(Staff, on_delete = models.PROTECT)
+	table_id = models.ForeignKey(Table, on_delete = models.PROTECT)
+	order_date = models.DateField(default =date.today)
+	order_time = models.TimeField(auto_now_add =True)
+	amount = models.FloatField(default=0)
+
+class Kot(models.Model):
+	STATUS=(('Waiting','Waiting'),('Cooking','Cooking'),('Delivered','Delivered'))
+	kot_id = models.AutoField(primary_key=True)
+	member_id = models.ForeignKey(Members,on_delete=models.PROTECT)
+	staff_id = models.ForeignKey(Staff, on_delete = models.PROTECT)
+	table_id = models.ForeignKey(Table, on_delete = models.PROTECT)
+	order_date = models.DateField(default =date.today)
+	order_time = models.TimeField(auto_now_add =True)
+	order_id = models.ForeignKey(Order, on_delete = models.PROTECT)
+	status=models.CharField(max_length=15,default='Waiting')
+	amount = models.FloatField()
+
+class KotItem(models.Model):
+	STATUS = (('Waiting', 'Waiting'), ('Cooking','Cooking'),('Cooked', 'Cooked'), ('Delivered', 'Delivered'))
+	kotitem_id = models.AutoField(primary_key=True)
+	kot_id = models.ForeignKey(Kot, on_delete = models.PROTECT, related_name='items')
+	quantity = models.IntegerField(default =1)
+	dish_id = models.ForeignKey(Dish, on_delete = models.PROTECT)
+	status =models.CharField(max_length=15,default="Waiting")
+	category_type = models.CharField(max_length=20)

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head>
+<title>Staff Registration</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<style type="text/css">
+
+body
+{
+    margin: 0;
+    padding: 0;
+
+    background-size: cover;
+    font-family: sans-serif;
+}
+h1 {
+  color:#ffc200;
+  text-shadow: 0px 4px 5px blue;
+  float:center
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.lp {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.container1
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width:100%;
+    border-radius: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+  float:center;
+}
+
+.signIn
+{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background: #247ebf;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+
+}
+
+.fold
+{
+    position: relative;
+    width: 80%;
+    background: rgba(17,24,34,.8);
+    transform-origin: top;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    transition: .5s;
+    transform: perspective(2000px) rotateX(90deg);
+   color: #fff;
+}
+
+.fold , .active
+{
+    transform: perspective(2000px) rotateX(0deg);
+}
+.fold form input[type="text"],
+.fold form input[type="password"],
+.fold form input[type="number"]
+{
+    width: 40%;
+    margin-bottom: 20px;
+    height: 40px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 40px;
+    box-shadow: none;
+    outline: none;
+    color: #fff;
+    background: transparent;
+    border: 1px solid #fff;
+}
+::placeholder
+{
+    color: #fff;
+}
+.fold form input[type="submit"]
+{
+  width:200px;
+    display: block;
+    padding: 12px 40px;
+    border-radius: 40px;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #1d2b38;
+    color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+  float:right;
+}
+.fold form input[type="submit"]:hover
+{
+
+    background: #247ebf;
+}
+.fold form a
+{
+    color: #fff;
+    margin-top: 20px;
+    display: block;
+    font-size: 14px;
+    text-align: right;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+span.psw {
+  float: left;
+  padding-top: 16px;
+
+}
+.forg
+{
+  float:left;
+}
+.login
+{
+  float:right;
+}
+img.avatar {
+  width: 40%;
+  border: 3.5px solid #247ebf;
+
+  padding: 3.5px;
+  border-radius: 50%;
+
+}
+body
+{
+  background-color:#f5f5f5;
+}
+.imagePreview {
+    width: 10%;
+    height: 80px;
+    background-position: center center;
+  background:url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg);
+  background-color:#fff;
+    background-size: cover;
+  background-repeat:no-repeat;
+    display: inline-block;
+  box-shadow:0px -3px 6px 2px rgba(0,0,0,0.2);
+}
+.btn-primary
+{
+
+  width:10%;
+  display:block;
+  border-radius:0px;
+  box-shadow:0px 4px 6px 2px rgba(0,0,0,0.2);
+  margin-top:-5px;
+}
+
+ .select {
+
+   width: 40%;
+    margin-bottom: 20px;
+    height: 40px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 40px;
+   overflow:hidden;
+    outline: none;
+     color: #fff;
+    background: transparent;
+    border: 1px solid #fff;
+}
+
+select option {
+    margin: 40px;
+    background: rgba(17,24,34,.8);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  border-radius:40px;
+}
+#uploadForm{
+  float: right;
+  width: 10%;
+}
+.div-center img, .div-center embed{
+  margin-top: 20px;
+  width:170px;
+  height:170px;
+  float:center;
+}
+.div-center input[type="file"]{
+    display: inline-block;
+  width:200px;
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 2px;
+  float:right;
+}
+ .inner {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background:transparent ;
+      float:right;
+      border: 1px #fff solid;
+        }
+
+*
+{
+box-sizing;
+ border-box;
+ }
+.topnav {
+  overflow: hidden;
+  background-color: #247ebf;
+  width : 40%;
+  float : center;
+  border-radius:25px;
+}
+.topnav a {
+  float: right;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 22px;
+}.topnav a:hover {
+  background-color:#ffff;
+  color: black;
+  border-radius:15px;
+}
+.topnav b {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 12px;
+}.topnav a:hover {
+  background-color:#ffff;
+  color: black;
+}
+
+img {
+  border-radius: 50%;
+  float:right;
+}
+
+input[type=submit] {
+  width: 40%;
+  background-color: #000080;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float:center;
+}
+
+.imp{
+  width:300px;
+  min-height:100px;
+  border:2px solid blue;
+  margin-top:15px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  color:green;
+}
+.imp1{
+  width:100%;
+  display:none;
+}
+.div4{
+width:400px;
+height:400px;
+float:right;
+}
+
+
+.topnav {
+  overflow: hidden;
+  background-color: #247ebf;
+  width : 90%;
+  float : center;
+  border-radius:25px;
+}
+.topnav a {
+  float: right;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+.topnav b {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 22px;
+}
+.topnav a:hover {
+  background-color:#ffff;
+  color: black;
+}
+
+img {
+  border-radius: 50%;
+  float:right;
+}
+
+input[type=submit] {
+  width: 40%;
+  background-color: #000080;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float:center;
+}
+
+.imp{
+  width:300px;
+  min-height:100px;
+  border:2px solid blue;
+  margin-top:15px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  color:green;
+}
+.imp1{
+  width:100%;
+  display:none;
+}
+.div4{
+width:400px;
+height:400px;
+float:right;
+}
+
+
+
+
+</style>
+</head>
+<body width="100%">
+<br>
+<
+  <center>
+	<div class="topnav">
+		<a href="/logout/" style="color:white;font-size: 22px;">Logout</a>
+		<a href="/menu/add/" style="color:white;font-size: 22px;">Configure Food</a>
+		<b align ="left" class="active" href="">Staff registration</b><br>
+	</div>
+	</center>
+  <br>
+
+
+  <ul><br>
+  <center><div class="container1">
+     <br><br><br><br>
+ <div class="fold">
+
+            <form id="myform">
+                <left>
+				<label  for="fname">FIRST NAME :</label>
+				<input type="text" name="" id="fname" placeholder="ENTER FIRST NAME" style="text-transform:uppercase" required><br>
+                <label for="lname">LAST NAME :</label>
+				<input type="text" name="" id="lname" placeholder="ENTER LAST NAME" style="text-transform:uppercase"><br>
+                <label for="contact">CONTACT NO:</label>
+				<input type="number" id="contact_no" name="" placeholder="ENTER THE CONTACT NO" required><br>
+        <label  for="work">WORK PROFILE :</label>
+        <select class="select" id="work" style="text-transform:uppercase">
+  <option class="opt">Cashier</option>
+  <option>Waiter</option>
+  <option>Captain</option>
+  <option>Chef</option>
+            <option>Bartender</option>
+            <option>Manager</option>
+</select><br>
+                <label  for="username">USERNAME :</label>
+				 <input type="text" name="" id="username" placeholder="CHOOSE USERNAME" required><br>
+
+          <label  for="password">PASSWORD :</label>
+           <input name="password" id="password" type="password" required><br>
+<label  for="con_password">CONFIRM PASSWORD :</label>
+           <input type="password" name="confirm_password" id="confirm_password" required><br>
+  <span id='message'></span><br>
+
+
+				<input type="submit"  name="submit" class="btn btn-primary" value="SUBMIT">
+				<br><br>
+
+
+	</ul>
+ </left>
+</form>
+</center>
+
+</div>
+</form>
+</div><br><br>
+
+  </div>
+
+</div>
+
+</div>
+
+	  </div>
+
+    </form>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script>
+
+var pwd = 0;
+
+$('#password, #confirm_password').on('keyup', function () {
+  if ($('#password').val() == $('#confirm_password').val()) {
+    $('#message').html('Passwords matched').css('color', 'white');
+    pwd=1;
+  } else {
+    $('#message').html('Passwords do not match').css('color', 'white');
+    pwd=0;
+  }
+});
+
+var URL = window.location.href;
+
+$("#myform").submit(function(event){
+    event.preventDefault();
+
+    if(pwd==0){
+
+        alert("correct the password");
+
+    }else {
+        var fname = document.getElementById("fname").value;
+        var lname = document.getElementById("lname").value;
+        var contact = document.getElementById("contact_no").value;
+        var work = document.getElementById("work").value;
+        var username =document.getElementById("username").value;
+        var password =document.getElementById("password").value;
+
+        var data = {
+            "fname": fname,
+            "lname": lname,
+            "contact": contact,
+            "work": work,
+            "username": username,
+            "password": password
+        };
+        console.log(data);
+
+        $.post(URL, data, function (response) {
+            console.log(response);
+            if(parseInt(response)==0){
+                alert("Username exists, try with another");
+
+            }else{
+                alert("Staff created");
+                window.location.href=URL;
+            }
+
+        });
+
+
+
+
+    }
+
+});
+
+</script>
+</body>
+</html>

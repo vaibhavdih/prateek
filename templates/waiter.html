@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head>
+<title>Waiter</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <meta http-equiv="refresh" content="10">
+
+
+<style type="text/css">
+
+    .topnav{
+  width:100%;
+  background-color: #8B008B;
+  height:60px;
+  border:1px solid black;
+}
+
+.container{
+    width:100%;
+    overflow-y: scroll;
+    border:1px solid black;
+    min-height:200px;
+    display:grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.active {
+  float: right;
+  color: white;
+  text-align: center;
+  padding: 12px 45px;
+  text-decoration: none;
+  font-size: 25px;
+  margin-top: 4px;
+  margin-right: 80px;
+
+
+}
+
+.active:hover{
+
+  background-color:#ffff;
+  color: black;
+  border-radius:15px;
+
+}
+
+.topnav b{
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 15px 45px;
+  text-decoration: none;
+  font-size: 25px;
+  margin-right:60px;
+
+
+}
+
+a{
+  float: right;
+  color: white;
+  text-align: center;
+  padding: 15px 40px;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+a:hover {
+  background-color:#ffff;
+  color: black;
+  border-radius:15px;
+}
+
+.card-item{
+    border:2px solid black;
+    margin-top:30px;
+    border-radius:15px;
+    margin-left: 30px;
+    margin-right:30px;
+}
+
+</style>
+
+<body>
+
+    <div class="topnav" style="display:flex;">
+    <b style="margin-right: 200px;margin-left: 25px;">Waiter</b>
+
+    <a href="/menu/order/">Order</a>
+
+   <a href="/logout/">Logout</a>
+
+
+  </div>
+  <div class="container">
+
+      {% if kotitems|length == 0 %}
+
+      <div style="margin-top: 50px;font-size: 30px;">
+      <center><span>No current orders cooked</span></center></div>
+
+        {% endif %}
+
+{% for kotitem in kotitems %}
+
+    <div class="card-item" id="{{ kotitem.kotitem_id }}-card-item">
+        <br>
+        <center>
+        <div style="width:90%;display:flex;font-weight: bold;">
+
+        <span style="width:90%;padding:5px 10px">TABLE NO - {{ kotitem.kot_id.table_id.table_id }}</span>
+    </div></center>
+    <center><hr style="width:90%"></center>
+    <center>
+        <div style="width:90%;display:flex;">
+        <span style="width:80%;padding:5px 10px">Item</span>
+        <span style="width:20%;padding:5px 10px;">Quantity</span>
+    </div>
+
+    <hr style="width:90%">
+
+
+
+
+             <form method="post" action="/waiter/" name="{{ kotitem.kotitem_id }}-form" id="{{ kotitem.kotitem_id }}-form">
+             <input type="hidden" name="kotitem_id" value={{ kotitem.kotitem_id }}>
+           <div style="width:90%;display:flex;">
+        <span style="width:80%;padding:5px 10px;">{{ kotitem.dish_id.name }}</span>
+        <span style="width:20%;padding:5px 10px;">{{ kotitem.quantity }}</span>
+
+    </div>
+                 <hr style="width:90%">
+    <input type="submit" value="Delivered" style="color:white;border:none;background-color: #8B008B;padding: 10px 20px;
+border-radius:5px;margin-top:15px;">
+             </form>
+
+
+
+
+    <br>
+
+    </center>
+    </div>
+
+{% endfor %}
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+
+
+
+      $(".container").height($(window).height()-90);
+
+
+
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head>
+<title>Kitchen</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <meta http-equiv="refresh" content="10">
+
+
+<style type="text/css">
+
+    .topnav{
+  width:100%;
+  background-color: #8B008B;
+  height:60px;
+  border:1px solid black;
+}
+
+.container{
+    width:100%;
+    overflow-y: scroll;
+    border:1px solid black;
+    min-height:200px;
+    display:grid;
+    grid-template-columns: auto auto auto;
+}
+
+.active {
+  float: right;
+  color: white;
+  text-align: center;
+  padding: 12px 45px;
+  text-decoration: none;
+  font-size: 25px;
+  margin-top: 4px;
+  margin-right: 80px;
+
+
+}
+
+.active:hover{
+
+  background-color:#ffff;
+  color: black;
+  border-radius:15px;
+
+}
+
+.topnav b{
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 15px 45px;
+  text-decoration: none;
+  font-size: 25px;
+  margin-right:60px;
+
+
+}
+
+a{
+  float: right;
+  color: white;
+  text-align: center;
+  padding: 15px 40px;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+a:hover {
+  background-color:#ffff;
+  color: black;
+  border-radius:15px;
+}
+
+.card-item{
+    border:2px solid black;
+    margin-top:30px;
+    border-radius:15px;
+    margin-left: 30px;
+    margin-right:30px;
+}
+
+</style>
+
+<body>
+
+    <div class="topnav" style="display:flex;">
+    <b style="margin-right: 200px;margin-left: 25px;">Chef</b>
+
+
+
+   <a href="/logout/">Logout</a>
+
+
+  </div>
+  <div class="container">
+
+      {% if key == 0 %}
+
+      <div style="margin-top: 50px;font-size: 30px;">
+      <center><span>No current KOTs awaiting</span></center></div>
+
+        {% endif %}
+
+{% for kot in kots %}
+
+    <div class="card-item" id="{{ kot.kot_id }}-card-item">
+        <br>
+        <center>
+        <div style="width:90%;display:flex;font-weight: bold;">
+        <span style="width:50%;padding:5px 10px">KOT NO - {{ kot.kot_id }}</span>
+        <span style="width:50%;padding:5px 10px">TABLE NO - {{ kot.table_id.table_id }}</span>
+    </div></center>
+    <center><hr style="width:90%"></center>
+    <center>
+
+    <div style="width:90%;display:flex;">
+        <span style="width:80%;padding:5px 10px">Item</span>
+        <span style="width:20%;padding:5px 10px;">Quantity</span>
+    </div>
+
+    <hr style="width:90%">
+
+     {% for kot_item in kot.items.all %}
+         {% if kot_item.dish_id.category.type == "Food" and kot_item.status != "Cooked" %}
+             <form method="post" action="/kitchen/" name="{{ kot_item.kotitem_id }}-form" id="{{ kot_item.kotitem_id }}-form">
+             <input type="hidden" name="kotitem_id" value={{ kot_item.kotitem_id }}>
+    <div onclick="document.forms['{{ kot_item.kotitem_id }}-form'].submit();" style="width:90%;display:flex;border:1px solid black;border-radius:3px;margin-bottom:4px;">
+        <span style="width:80%;padding:5px 10px;">{{ kot_item.dish_id.name }}</span>
+        <span style="width:20%;padding:5px 10px;">{{ kot_item.quantity }}</span>
+    </div>
+             </form>
+         {% endif %}
+            {% endfor %}
+
+    <hr style="width:90%">
+    <div style="font-size:25px;" id="{{ kot.kot_id }}_div" class="time_div">
+
+  </div>
+    <hr style="width:90%">
+    <br>
+
+    </center>
+    </div>
+
+{% endfor %}
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+
+        function clock(){
+            console.log("hello");
+        }
+
+      $(".container").height($(window).height()-90);
+      var today = new Date();
+
+      console.log(today);
+
+        {% for kot in kots %}
+            var date1= new Date("{{ kot.order_date|date:"M j, Y" }} {{ kot.order_time|time:"G:i:s" }}");
+            var seconds = Math.abs(today - date1)/1000;
+            console.log(seconds);
+            var measuredTime = new Date(null);
+            measuredTime.setSeconds(seconds);
+            var in_time = measuredTime.toISOString().substr(11, 8);
+            document.getElementById("{{ kot.kot_id }}_div").innerHTML=in_time;
+
+        {% endfor %}
+
+    setInterval(function(){
+        console.log("hello");
+        var j = document.getElementsByClassName("time_div");
+        for(var i=0;i<j.length;i++){
+            var b=j[i].innerHTML.split(":");
+            var hour=parseInt(b[0]);
+            var minutes=parseInt(b[1]);
+            var seconds=parseInt(b[2]);
+            if(seconds<59){
+                seconds=seconds+1;
+            }else{
+                seconds=0
+                if(minutes<59){
+                    minutes=minutes+1;
+                }else{
+                    minutes=0;
+                    hour=hour+1;
+                }
+            }
+            if(minutes>15 && minutes<30 && hour==0){
+                j[i].parentElement.style.color="red";
+            }else if(minutes>30 || hour>0){
+                j[i].parentElement.style.color="blue";
+
+            }
+
+            j[i].innerHTML = ("0" + hour).slice(-2)+":"+("0" + minutes).slice(-2)+":"+("0" + seconds).slice(-2);
+        }
+    },950);
+
+    });
+    </script>
+</body>
+</html>

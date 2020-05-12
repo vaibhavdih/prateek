@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%x3%0evsdzg&k052ky0r__7#dpnv3cwjq2u(gpz04l7x4bi0h-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1','3.21.126.57']
 
@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -122,6 +122,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATICFILES_DIRS=[os.path.join(BASE_DIR,'static'),]
-STATIC_URL = '/static/'
-
+STATIC_URL = '/state/'
+STATIC_ROOT=os.path.join(BASE_DIR,'state/')
 

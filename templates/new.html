@@ -84,7 +84,7 @@
     transform: perspective(2000px) rotateX(0deg);
 }
 .fold form input[type="text"],
-.fold form input[type="password"]
+.fold form input[type="password"],.fold form input[type="number"]
 {
     width: 50%;
     margin-bottom: 15px;
@@ -177,7 +177,7 @@
 	<br>
 	<center>
 	<div class="topnav">
-		<a class="active" href="">Logout</a>
+		<a class="active" href="/logout/">Logout</a>
 		<a class="active" href="/member/coins">Coin Management</a>
 		<b align ="left" class="active" href="">New Member Registration</b><br>
 	</div>
@@ -188,15 +188,15 @@
 				<form>
 				
 				<label  for="fname">&emsp;FIRST NAME :</label>
-				<input type="text" name="" id="1" placeholder="ENTER FIRST NAME"><br>
+				<input type="text" name="" id="1" placeholder="ENTER FIRST NAME" style="text-transform:uppercase"><br>
                 <label for="lname">&emsp;LAST NAME :</label>
-				<input type="text" name="" id="2" placeholder="ENTER LAST NAME"><br>
+				<input type="text" name="" id="2" placeholder="ENTER LAST NAME" style="text-transform:uppercase"><br>
                 <label  for="address">&emsp;&emsp;ADDRESS :</label>
 				 <input type="text" name="" id="3" placeholder="ENTER THE ADDRESS"><br>
                 <label for="contact">CONTACT NO :</label>
 				<input type="text" name="" id ="4" placeholder="ENTER THE CONTACT NO"><br>
                 <label  for="rating">&emsp;&emsp;&emsp;RATING :</label>
-				 <input type="text" name="" id="5" placeholder="ENTER THE RATING"><br>
+				 <input type="number" name="" id="5" placeholder="ENTER THE RATING"><br>
                 <label for="idt">&emsp;&emsp;&emsp;ID TYPE :</label>
 				
   				<select class="select" id="6">

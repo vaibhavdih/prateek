@@ -19,7 +19,7 @@
   position: fixed;
   left: 1%;
   top: 70px;
-  min-height: 200px;
+overflow-y:scroll;
   width: 17%;
   background-color: white;
 }
@@ -27,7 +27,7 @@
   box-sizing: border-box;
   position: fixed;
   right: 5px;
-  top: 30px;
+  top: 5px;
   min-height: 200px;
   min-width: 35%;
   background: #ccc;
@@ -220,13 +220,85 @@
     background-color: #2D9CDB;
 }
 
+.topnav{
+	overflow:hidden;
+	background-color: #8B008B;
+	width: 63%;
+    top:0px;
+    border-radius:5px;
+}
+
+.topnav a {
+    float:right;
+	color: white;
+	text-align:center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.topnav select {
+
+   width: 30%;
+
+    height: 35px;
+    margin-top: 7px;
+    box-sizing: border-box;
+    border-radius: 40px;
+   overflow:hidden;
+    outline: none;
+     color: #fff;
+    background: transparent;
+    border: 2px solid #fff;
+    text-indent: 35px;
+}
+
+.topnav select option {
+    margin: 40px;
+    background: rgba(17,24,34,.8);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+	border-radius:40px;
+    padding:5px;
+}
+
+.topnav a:hover{
+	background-color:#ffff;
+	color: black;
+	border-radius:15px;
+}
+
+.topnav b{
+	float: left;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 20px;
+
+}
 
 
 	</style>
 
 </head>
 <body>
-	<div class="container">
+
+	<div class="topnav">
+
+        <b class="active">Table : </b>
+		<select id="table_no">
+{% for table in tables %}
+            <option value="{{ table.table_id }}">{{ table.table_id }}</option>
+            {% endfor %}
+        </select>
+        <a class="active"  href="/logout/">Logout</a>
+    <a class="active"  href="/waiter/">Home</a>
+
+	</div>
+
+
+<div class="container">
 		<div class="leftside">
 
             {% for category in categories %}
@@ -262,7 +334,7 @@
             </div>
             <div class="back">
             <a href="">
-            <button class="btn btn-primary  btn-back" type="button">Back</button>
+
             </a>
             <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
             </div>
@@ -277,9 +349,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			$(".leftside").height($(window).height()-50);
-			$(".rightside").height($(window).height()-50);
-			$(".scrollable").height($(window).height()-50);
+			$(".leftside").height($(window).height()-85);
+			$(".rightside").height($(window).height()-35);
+			$(".scrollable").height($(window).height()-85);
+			document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked);
 
 
             {% for category in categories %}
@@ -360,15 +433,35 @@
 		        button.addEventListener('click', addToCartClicked)
 		    }
 
-		    document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
+
 		}
 		function purchaseClicked() {
-		    alert('Thank you for your purchase')
-		    var cartItems = document.getElementsByClassName('cart-items')[0]
-		    while (cartItems.hasChildNodes()) {
-		        cartItems.removeChild(cartItems.firstChild)
-		    }
-		    updateCartTotal()
+
+		    var cartItems = document.getElementsByClassName('cart-items')[0];
+
+		   var a = cartItems.getElementsByClassName("cart-row");
+		   var cart="";
+
+		  for(var i =0;i<a.length;i++){
+		      var title = a[i].getElementsByClassName("cart-item-title")[0].innerText;
+		      var quantity = a[i].getElementsByClassName('cart-quantity-input')[0].value;
+		      cart=cart+title+"="+quantity+";";
+
+
+          }
+
+		  var data ={"data":cart,"table":document.querySelector('#table_no').value};
+
+		  var URL=window.location.href;
+
+		  $.post(URL,data,function(response){
+  				alert("Your order has been accepted.");
+  				window.location.replace(URL);
+  			});
+
+		  console.log(cart);
+
+
 		}
 
 		function removeCartItem(event) {

@@ -15,9 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from member import views
+from menu import views as v
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('member/',include('member.urls')),
     path('menu/',include('menu.urls')),
+    path('login/',views.staff_login,name="staff_login"),
+    path('logout/',views.staff_logout,name="staff_logout"),
+    path('captain/',views.captain,name="captain"),
+    path('captain/checkin/',views.checkin,name="checkin"),
+    path('captain/punch/',v.punch_kot,name="punch_kot"),
+    path('kitchen/',v.kitchen,name="kitchen"),
+    path('bar/',v.bar,name='bar'),
+    path('waiter/',v.waiter,name="waiter"),
 ]

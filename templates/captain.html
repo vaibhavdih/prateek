@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head>
+<title>Table</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<style type="text/css">
+
+.topnav{
+  width:100%;
+  background-color: #8B008B;
+  height:70px;
+  border:1px solid black;
+}
+
+.container{
+  top:0px;
+  display:flex;
+  justify-content:center;
+  border:1px solid black;
+  width:100%;
+}
+
+.left-side{
+  height:500px;
+  width:25%;
+  background-color:#8B008B;
+  left-margin:0px;
+  float:left;
+  left:;
+
+}
+
+
+.right-side{
+  width:75%;
+  overflow-y: scroll;
+  display:grid;
+  grid-template-columns: auto auto auto auto;
+  float:right;
+
+
+
+}
+
+.table-item{
+
+  margin: 10px;
+
+  height:180px;
+  margin-bottom: 20px;
+
+}
+
+
+
+img{
+  width:60%;
+}
+
+a{
+  float: right;
+  color: white;
+  text-align: center;
+  padding: 15px 40px;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+a:hover {
+  background-color:#ffff;
+  color: black;
+  border-radius:15px;
+}
+
+.active {
+  float: right;
+  color: white;
+  text-align: center;
+  padding: 15px 45px;
+  text-decoration: none;
+  font-size: 25px;
+  margin-top: 4px;
+  margin-right: 80px;
+
+
+}
+
+.active:hover{
+
+  background-color:#ffff;
+  color: black;
+  border-radius:15px;
+
+}
+
+.topnav b{
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 15px 45px;
+  text-decoration: none;
+  font-size: 25px;
+  margin-right:60px;
+
+
+}
+
+</style>
+</head>
+<body>
+  <div class="topnav" style="display:flex;justify-content: center;">
+    <b>Captain</b>
+
+
+   <a class="active" href="/captain/punch/">Punch Kot</a>
+   <a href="/captain/" class="active" style="border:solid 2px white;">Tables</a>
+   <a href="/logout/">Logout</a>
+
+
+  </div>
+  <div class="container">
+    <div class="left-side">
+      <div style="font-size:25px;color:white;padding-top:20px;width:100%">
+      <center><span>Checkin</span></center>
+      <br>
+      <center>
+      <form method="post" action="/captain/checkin/">
+        <label for="member" style="font-size: 18px;">Member ID</label><br>
+        <input id="member" name="member" list="members" type="text" required>
+        <datalist id="members">
+        {% for member in memberss %}
+                   <option value="{{ member.member_id }}">
+            {% endfor %}
+
+           </datalist><br><br>
+           <label for="quantity" style="font-size: 18px;">Total People</label><br>
+           <input id="quantity" name="quantity" type="number" required><br><br>
+           <input type="submit" style="font-size:20px;" value="Search">
+
+        <br>
+      </form>
+    </center>
+    </div>
+
+
+    </div>
+    <div class="right-side">
+
+    {% for table in tables %}
+      <div class="table-item">
+        <center>
+            {% if table.status == "occupied" %}
+            <img src="{% static "images/red-chair.png" %}">
+                <center><b style="background-color:yellow;padding-top:7px;padding-bottom:7px;padding-left: 16px;padding-right: 16px;">{{ table.table_id }}</b><b style="background-color:blue;color:white;padding-top:7px;padding-bottom:7px;padding-left: 16px;padding-right: 16px;">{{ table.capacity }}</b></center>
+
+                <center>
+         <form id="{{ table.table_id }}_form" method="post" action="">
+          <input type="hidden" name="table" value="{{ table.table_id }}">
+          <input type="submit" value="Vacate" style="font-size:17px;border-radius:5px;padding-top:4px;padding-bottom:4px;padding-left:20px;padding-right:20px;margin-top:5px;background-color: #8B008B;color:white;border:none;">
+
+         </form>
+       </center>
+            {% else %}
+                <img src="{% static "images/green-chair.png" %}">
+                       <center><b style="background-color:yellow;padding-top:7px;padding-bottom:7px;padding-left: 16px;padding-right: 16px;">{{ table.table_id }}</b><b style="background-color:blue;color:white;padding-top:7px;padding-bottom:7px;padding-left: 16px;padding-right: 16px;">{{ table.capacity }}</b></center>
+
+            {% endif %}
+       </center>
+      </div>
+
+        {% endfor %}
+
+
+
+      </div>
+
+    </div>
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      $(".left-side").height($(window).height()-90);
+      $(".right-side").height($(window).height()-90);
+
+    });
+    </script>
+
+</body>
+</html>
